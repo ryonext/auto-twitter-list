@@ -3,6 +3,7 @@ class TwitterClient
   attr_accessor :consumer_key, :consumer_secret, :access_token, :access_token_secret
 
   def update_list!
+    logger.info("Start updating list.")
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = self.consumer_key
       config.consumer_secret     = self.consumer_secret
@@ -15,6 +16,7 @@ class TwitterClient
     new_ids = remove_processed(my_id, friend_ids)
     client.add_list_members('Recent', new_ids)
     register_new_ids(my_id, new_ids)
+    logger.info("Finish updating list.")
   end
 
   def remove_processed(my_id, ids)
