@@ -3,7 +3,7 @@ class UpdatingListWorker
   include Sidetiq::Schedulable
 
   recurrence backfill: true do
-    hourly.minute_of_hour(0, 20, 40) }
+    hourly.minute_of_hour(0, 20, 40)
   end
 
   def perform(*args)
