@@ -32,4 +32,10 @@ class TwitterClient
     end
     ProcessedId.import records
   end
+
+  private
+
+    def logger
+      @logger ||= Logger.new(File.join(Rails.root, 'log', 'sidekiq.log'))
+    end
 end
