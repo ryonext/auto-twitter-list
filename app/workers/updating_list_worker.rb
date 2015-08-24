@@ -2,6 +2,8 @@ class UpdatingListWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
+  sidekiq_options retry: false
+
   recurrence backfill: true do
     hourly.minute_of_hour(0, 20, 40)
   end
